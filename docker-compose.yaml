@@ -56,7 +56,7 @@ services:
 
   card:
     image: vamsi0122/card:v1
-    container_name: user
+    container_name: card
     networks:
       - roboshop
     depends_on:
