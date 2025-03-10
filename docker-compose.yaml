@@ -23,15 +23,15 @@ services:
     - roboshop
     depends_on:
     - mongodb
-  # redis:
-  #   image: redis
-  #   container_name: redis
-  #   networks:
-  #     - roboshop
-  #   volumes:
-  #   - source: redis
-  #     target: /data
-  #     type: volume
+  redis:
+    image: redis
+    container_name: redis
+    networks:
+      - roboshop
+    volumes:
+    - source: redis
+      target: /data
+      type: volume
   # user:
   #   image: joindevops/user:v1
   #   container_name: user
