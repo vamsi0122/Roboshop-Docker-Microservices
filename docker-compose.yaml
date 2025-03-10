@@ -32,14 +32,14 @@ services:
     - source: redis
       target: /data
       type: volume
-  # user:
-  #   image: joindevops/user:v1
-  #   container_name: user
-  #   networks:
-  #     - roboshop
-  #   depends_on:
-  #     - mongodb
-  #     - redis
+  user:
+    image: joindevops/user:v1
+    container_name: user
+    networks:
+      - roboshop
+    depends_on:
+      - mongodb
+      - redis
   cart:
     image: vamsi0122/cart:v1
     container_name: cart
