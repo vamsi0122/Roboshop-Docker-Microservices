@@ -40,14 +40,14 @@ services:
   #   depends_on:
   #     - mongodb
   #     - redis
-  # cart:
-  #   image: joindevops/cart:v1
-  #   container_name: cart
-  #   networks:
-  #     - roboshop
-  #   depends_on:
-  #     - redis
-  #     - catalogue
+  cart:
+    image: vamsi0122/cart:v1
+    container_name: cart
+    networks:
+      - roboshop
+    depends_on:
+      - redis
+      - catalogue
   # mysql:
   #   image: joindevops/mysql:v1
   #   container_name: mysql
