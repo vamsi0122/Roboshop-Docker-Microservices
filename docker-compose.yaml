@@ -9,7 +9,6 @@ volumes:
   rabbitmq:
 
 services:
-  
   catalogue:
     image: vamsi0122/catalogue:v1
     container_name: catalogue
