@@ -1,4 +1,3 @@
-#git add .;git commit -m "all";git push origin main
 networks:
   roboshop:
     driver: bridge
@@ -7,26 +6,23 @@ volumes:
   redis:
   mysql:
   rabbitmq:
-
 services:
-  catalogue:
-    image: vamsi0122/catalogue:v1
-    container_name: catalogue
-    networks:
-      - roboshop
-    depends_on:
-      - mongodb
-
   mongodb:
-    image: vamsi0122/mongodb:v1
+    image: joindevops/mongodb:v1
     container_name: mongodb
     networks:
       - roboshop
     volumes:
-      - source: mongodb
-        target: /data/db
-        type: volume
-
+    - source: mongodb
+      target: /data/db
+      type: volume
+  catalogue:
+    image: joindevops/catalogue:v1
+    container_name: catalogue
+    networks:
+    - roboshop
+    depends_on:
+    - mongodb
   redis:
     image: redis
     container_name: redis
@@ -36,26 +32,23 @@ services:
     - source: redis
       target: /data
       type: volume
-
   user:
-    image: vamsi0122/user:v1
+    image: joindevops/user:v1
     container_name: user
     networks:
       - roboshop
     depends_on:
       - mongodb
       - redis
-
-  card:
-    image: vamsi0122/card:v1
-    container_name: card
+  cart:
+    image: joindevops/cart:v1
+    container_name: cart
     networks:
       - roboshop
     depends_on:
       - redis
       - catalogue
-  
-   mysql:
+  mysql:
     image: joindevops/mysql:v1
     container_name: mysql
     networks:
